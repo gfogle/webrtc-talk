@@ -1,7 +1,10 @@
 var colors = {
-  primary: '#f9c300',
-  secondary: 'black',
-  tertiary: 'white'
+  primary: '#494949',
+  secondary: '#cb5599',
+  black: 'black',
+  white: 'white',
+  code: '#23241f',
+  teal: '#49C6B7'
 };
 
 var fonts = {
@@ -123,7 +126,7 @@ module.exports = {
       },
       h6: {
         color: 'black',
-        fontSize: '2.66em',
+        fontSize: '.25em',
         fontFamily: fonts.primary,
         lineHeight: 1,
         fontWeight: 'bold',

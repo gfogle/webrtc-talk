@@ -1,0 +1,9 @@
+React.render(
+
+    <Hello
+        word={word}
+        mode={mode}
+        actions={action} />,
+
+    document.getElementById('content')
+)
