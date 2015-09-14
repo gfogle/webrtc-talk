@@ -1,21 +1,14 @@
-#Spectacle
-ReactJS based Presentation Library
 
-##Getting Started
+##CREATING PRESENTATION
 
-Your first order of business is to open terminal and run `npm install`
+Presentation can be loaded up into local webserver via:
 
-Then, to start up the local server, run `npm start`
+- `npm install`
+- `npm run build`
+- `npm start`
+- open web browser and go to `http://localhost:3000`
 
-Open a browser and hit `http://localhost:3000`, and we are ready to roll
-
-## Build & Deploy
-
-Building the dist version of the project is as easy as running `npm run build`
-
-If you want to deploy the slideshow to surge, run `npm run deploy`
-
-## Presenting
+## PRESENTING
 
 Spectacle comes with a built in presenter mode. It shows you a slide lookahead, current time and your current slide:
 
@@ -27,7 +20,6 @@ To present:
 - Open two browser windows on two different screens
 - On your screen visit [http://localhost:3000/#/?presenter](http://localhost:3000/#/)
 - On the presentation screen visit [http://localhost:3000/#/](http://localhost:3000/#/)
-- Give an amazingly stylish presentation
 
 _Note: Any windows/tabs in the same browser that are running Spectacle will sync to one another, even if you don't want to use presentation mode_
 
@@ -35,9 +27,7 @@ Check it out:
 
 ![http://i.imgur.com/H7o2qHI.gif](http://i.imgur.com/H7o2qHI.gif_)
 
-## PDF Export
-
-Exporting a totally sweet looking PDF from your totally sweet looking Spectacle presentation is asburdly easy.
+## PDF EXPORT
 
 - Run `npm start`
 - Hit [http://localhost:3000/#/?export](http://localhost:3000/#/?export)
@@ -49,9 +39,7 @@ Exporting a totally sweet looking PDF from your totally sweet looking Spectacle 
 
 If you want to print your slides, and want a printer friendly version, simply repeat the above process but instead print from [http://localhost:3000/#/?export&print](http://localhost:3000/#/?export&print)
 
-## Basic Concepts
-
-### Main file
+## BASIC CONCEPTS
 
 Your presentation files & assets will live in the `presentation` folder.
 
@@ -84,10 +72,9 @@ Here is where you can use the library's tags to compose your presentation. While
 
 The bare minimum you need to start is a `Deck` element and a `Slide` element. Each `Slide` element represents a slide inside of your slideshow.
 
-### Themes
+### THEMES
 
 In Spectacle, themes live in the `themes` directory. They consist of `html.js` and `index.js`.
-
 `index.js` is what you would edit in order to create a custom theme of your own, using ReactJS style inline style objects.
 
 ```javascript
