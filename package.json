@@ -1,12 +1,11 @@
 {
-  "name": "spectacle",
-  "version": "0.0.1",
-  "description": "ReactJS Powered Presentation Framework",
+  "name": "webrtc-talk",
+  "version": "0.1.0",
+  "description": "WebRTC Tech Talk Powered ReactJS / Spectacle",
   "main": "index.js",
   "scripts": {
     "start": "webpack-dev-server",
-    "build": "webpack",
-    "deploy": "npm run build && surge -p ./dist"
+    "build": "webpack"
   },
   "author": "",
   "license": "ISC",
