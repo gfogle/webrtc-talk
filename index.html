@@ -1,0 +1,128 @@
+<!doctype html>
+<html>
+<head>
+	<script type="text/javascript">
+		var myConnection;
+		var remoteConnection;
+
+		// polyfill for cross-browser issues ... should use adapter.js
+		navigator.getWebcam = (
+			navigator.getUserMedia ||
+			navigator.webkitGetUserMedia ||
+			navigator.mozGetUserMedia ||
+			navigator.msGetUserMedia
+		);
+
+		var PeerConnection = window.RTCPeerConnection ||
+			window.mozRTCPeerConnection ||
+			window.webkitRTCPeerConnection ||
+			window.msRTCPeerConnection;
+
+		var SessionDescription = window.RTCSessionDescription ||
+			window.mozRTCSessionDescription ||
+			window.webkitRTCSessionDescription ||
+			window.msRTCSessionDescription;
+
+		var config = {
+			"iceServers": [
+				{"url": "stun:stun.1.google.com:19302"},
+				{"url": "stun:stun1.1.google.com:19302"}
+			]
+		};
+
+		navigator.getWebcam(
+			{video: true, audio: false},
+			gotYoWebcam,
+			function(error) {
+				// NOT_SUPPORTED
+				// PERMISSION_DENIED
+				// MANDATORY_UNSATISFIED_ERROR
+				console.log("shit dawg something didnt work: ", err);
+			}
+		);
+
+		function gotYoWebcam(stream) {
+			var localVideo = document.getElementById("my-video");
+			localVideo.src = window.URL.createObjectURL(stream);
+			localVideo.play();
+
+			var track = stream.getVideoTracks()[0];
+			var output = document.getElementById("output");
+
+			output.innerHTML = "stream: " + stream.id + "<br />";
+			output.innerHTML += "track state: " + track.readyState + "<br />";
+
+			createConnection(stream);
+		}
+
+		function createConnection(stream) {
+			// use local streams
+			myConnection = new PeerConnection(null);
+			remoteConnection = new PeerConnection(null);
+
+			// listen for ICE candidates
+			myConnection.onicecandidate = gotMyIceCandidate;
+			remoteConnection.onicecandidate = gotRemoteIceCandidate;
+
+			// Handle streams
+			myConnection.addStream(stream);
+			remoteConnection.onaddstream = gotRemoteStream;
+
+			// Create local SDP offer to send to remote
+			myConnection.createOffer(gotLocalDescription);
+		}
+
+		function gotMyIceCandidate(event) {
+			if (event.candidate) {
+				console.log("Local candidate: ", event.candidate);
+				// send to remote peer
+				remoteConnection.addIceCandidate(
+					new RTCIceCandidate(event.candidate)
+				);
+			}
+		}
+
+		function gotRemoteIceCandidate(event) {
+			if (event.candidate) {
+				console.log("Remote candidate: ", event.candidate);
+				// send to remote peer
+				myConnection.addIceCandidate(
+					new RTCIceCandidate(event.candidate)
+				);
+			}
+		}
+
+		// Create SDP offer to remote peer, but basically connecting to
+		// ourselves. In real life, we'd get these from say, a socket
+		function gotLocalDescription(description) {
+			myConnection.setLocalDescription(description);
+
+			remoteConnection.setRemoteDescription(description);
+			remoteConnection.createAnswer(gotRemoteDescription);
+		}
+
+		function gotRemoteDescription(description) {
+			remoteConnection.setLocalDescription(description);
+			myConnection.setRemoteDescription(description);
+		}
+
+		function gotRemoteStream(event) {
+			console.log(event);
+			var remoteVideo = document.getElementById("their-video");
+			remoteVideo.src = window.URL.createObjectURL(event.stream);
+			remoteVideo.play();
+		}
+
+	</script>
+</head>
+<body>
+	<!-- you -->
+	<video id="my-video" style="height: 400px"></video>
+
+	<!-- them -->
+	<video id="their-video" style="height: 400px"></video>
+
+	<!-- meta -->
+	<div id="output"></div>
+</body>
+</html>

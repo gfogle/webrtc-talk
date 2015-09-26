@@ -1,0 +1,6 @@
+function gotRemoteStream(event) {
+	console.log(event);
+	var remoteVideo = document.getElementById("their-video");
+	remoteVideo.src = window.URL.createObjectURL(event.stream);
+	remoteVideo.play();
+}

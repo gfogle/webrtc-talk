@@ -1,0 +1,13 @@
+// Create SDP offer to remote peer, but basically connecting to
+// ourselves. In real life, we'd get these from say, a socket
+function gotLocalDescription(description) {
+	myConnection.setLocalDescription(description);
+
+	remoteConnection.setRemoteDescription(description);
+	remoteConnection.createAnswer(gotRemoteDescription);
+}
+
+function gotRemoteDescription(description) {
+	remoteConnection.setLocalDescription(description);
+	myConnection.setRemoteDescription(description);
+}

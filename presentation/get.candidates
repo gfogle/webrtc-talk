@@ -1,0 +1,19 @@
+function gotMyIceCandidate(event) {
+	if (event.candidate) {
+		console.log("Local candidate: ", event.candidate);
+		// send to remote peer
+		remoteConnection.addIceCandidate(
+			new RTCIceCandidate(event.candidate)
+		);
+	}
+}
+
+function gotRemoteIceCandidate(event) {
+	if (event.candidate) {
+		console.log("Remote candidate: ", event.candidate);
+		// send to remote peer
+		myConnection.addIceCandidate(
+			new RTCIceCandidate(event.candidate)
+		);
+	}
+}

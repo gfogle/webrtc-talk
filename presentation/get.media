@@ -1,0 +1,11 @@
+function gotYoWebcam(stream) {
+	var localVideo = document.getElementById("my-video"); // HTML video element
+	localVideo.src = window.URL.createObjectURL(stream); // videos can take a stream as source
+	localVideo.play();
+
+	var track = stream.getVideoTracks()[0];
+	var output = document.getElementById("output");
+
+	output.innerHTML = "stream: " + stream.id + "<br />";
+	output.innerHTML += "track state: " + track.readyState + "<br />";
+}

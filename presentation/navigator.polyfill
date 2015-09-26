@@ -1,0 +1,18 @@
+// polyfill for cross-browser issues ... should use adapter.js
+navigator.getWebcam = (
+	navigator.getUserMedia ||
+	navigator.webkitGetUserMedia ||
+	navigator.mozGetUserMedia ||
+	navigator.msGetUserMedia
+);
+
+navigator.getWebcam(
+	{video: true, audio: false}, // only get video, no audio
+	gotYoWebcam, // we're going to execute this function
+	function(error) {
+		// NOT_SUPPORTED
+		// PERMISSION_DENIED
+		// MANDATORY_UNSATISFIED_ERROR
+		console.log("shit dawg something didnt work: ", err);
+	}
+);

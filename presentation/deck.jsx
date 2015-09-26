@@ -54,21 +54,11 @@ export default class extends React.Component {
               </Heading>
             </Appear>
             <List fit>
-              <ListItem caps bold textColor="primary"><Appear><Text textSize={54} textColor="secondary">Access to Audio, Video in JS</Text></Appear></ListItem>
+              <ListItem caps bold textColor="primary"><Appear><Text textSize={54} textColor="secondary">Built-in Access to Audio, Video in Browser</Text></Appear></ListItem>
+              <ListItem caps bold textColor="primary"><Appear><Text textSize={54} textColor="secondary">Access via standard JS APIs</Text></Appear></ListItem>
               <ListItem caps bold textColor="primary"><Appear><Text textSize={54} textColor="secondary">Cross-Browser, No Plugins</Text></Appear></ListItem>
-              <ListItem caps bold textColor="primary"><Appear><Text textSize={54} textColor="secondary">Collaboration between Google, Mozilla, etc.</Text></Appear></ListItem>
-            </List>
-        </Slide>
-        <Slide transition={["slide"]} bgImage={images.city.replace("/", "")} bgDarken={0.75}>
-            <Appear>
-              <Heading size={1} caps fit textColor="white">
-                Major Parts:
-              </Heading>
-            </Appear>
-            <List fit>
-              <ListItem caps bold textColor="primary"><Appear><Text textColor="secondary">SIGNALING</Text></Appear></ListItem>
-              <ListItem caps bold textColor="primary"><Appear><Text textColor="secondary">ICE, STUN, TURN</Text></Appear></ListItem>
-              <ListItem caps bold textColor="primary"><Appear><Text textColor="secondary">WEB API</Text></Appear></ListItem>
+              <ListItem caps bold textColor="primary"><Appear><Text textSize={54} textColor="secondary">Collaboration (sorta) between Google, Mozilla, Microsoft, etc.</Text></Appear></ListItem>
+              <ListItem caps bold textColor="primary"><Appear><Text textSize={54} textColor="secondary">"http://iswebrtcreadyyet.com"</Text></Appear></ListItem>
             </List>
         </Slide>
         <Slide transition={["slide"]} bgImage={images.city.replace("/", "")} bgDarken={0.75}>
@@ -89,14 +79,13 @@ export default class extends React.Component {
         <Slide transition={["slide"]} bgImage={images.city.replace("/", "")} bgDarken={0.75}>
             <Appear>
               <Heading size={1} caps fit textColor="white">
-                Network Address Translation (NAT)
+                Major Parts:
               </Heading>
             </Appear>
             <List fit>
-              <ListItem caps bold textColor="primary"><Appear><Text textSize={54} textColor="secondary">ISPs divide the world into internet networks</Text></Appear></ListItem>
-              <ListItem caps bold textColor="primary"><Appear><Text textSize={54} textColor="secondary">Each network has an exposed public IP Address(es)</Text></Appear></ListItem>
-              <ListItem caps bold textColor="primary"><Appear><Text textSize={54} textColor="secondary">Internally, those networks have private IPs</Text></Appear></ListItem>
-              <ListItem caps bold textColor="primary"><Appear><Text textSize={54} textColor="secondary">NAT is needed when # computers > # addresses</Text></Appear></ListItem>
+              <ListItem caps bold textColor="primary"><Appear><Text textColor="secondary">SIGNALING</Text></Appear></ListItem>
+              <ListItem caps bold textColor="primary"><Appear><Text textColor="secondary">ICE, STUN, TURN</Text></Appear></ListItem>
+              <ListItem caps bold textColor="primary"><Appear><Text textColor="secondary">WEB API</Text></Appear></ListItem>
             </List>
         </Slide>
         <Slide transition={["slide"]} bgImage={images.city.replace("/", "")} bgDarken={0.75}>
@@ -106,9 +95,31 @@ export default class extends React.Component {
               </Heading>
             </Appear>
             <List fit>
-              <ListItem caps bold textColor="primary"><Appear><Text textSize={54} textColor="secondary">2 clients doing a "handshake"</Text></Appear></ListItem>
-              <ListItem caps bold textColor="primary"><Appear><Text textSize={54} textColor="secondary">WebRTC doesnt care about transport protocol</Text></Appear></ListItem>
-              <ListItem caps bold textColor="primary"><Appear><Text textSize={54} textColor="secondary">HTTP, XHR Polling, XMPP, SIP, websockets</Text></Appear></ListItem>
+              <ListItem caps bold textColor="primary"><Appear><Text textSize={40} textColor="secondary">Clients do a "handshake" with central server</Text></Appear></ListItem>
+              <ListItem caps bold textColor="primary"><Appear><Text textSize={40} textColor="secondary">Server introduces a peer to all other peers</Text></Appear></ListItem>
+              <ListItem caps bold textColor="primary"><Appear><Text textSize={40} textColor="secondary">Signaling server isnt in the spec</Text></Appear></ListItem>
+              <ListItem caps bold textColor="primary"><Appear><Text textSize={40} textColor="secondary">WebRTC doesnt care about transport protocol</Text></Appear></ListItem>
+              <ListItem caps bold textColor="primary"><Appear><Text textSize={40} textColor="secondary">HTTP, XHR Polling, XMPP, SIP, websockets</Text></Appear></ListItem>
+              <ListItem caps bold textColor="primary"><Appear><Text textSize={40} textColor="secondary">"https://github.com/andyet/signalmaster"</Text></Appear></ListItem>
+            </List>
+        </Slide>
+        <Slide transition={["slide"]} bgImage={images.city.replace("/", "")} bgDarken={0.75}>
+            <Appear>
+              <Heading size={1} caps fit textColor="white">
+                Wait, we need servers?
+              </Heading>
+            </Appear>
+        </Slide>
+        <Slide transition={["slide"]} bgImage={images.city.replace("/", "")} bgDarken={0.75}>
+            <Appear>
+              <Heading size={1} caps fit textColor="white">
+                Network Address Translation (NAT)
+              </Heading>
+            </Appear>
+            <List fit>
+              <ListItem caps bold textColor="primary"><Appear><Text textSize={40} textColor="secondary">ISP's divide the world into internet networks</Text></Appear></ListItem>
+              <ListItem caps bold textColor="primary"><Appear><Text textSize={40} textColor="secondary">Each network has an exposed public IP Address(es)</Text></Appear></ListItem>
+              <ListItem caps bold textColor="primary"><Appear><Text textSize={40} textColor="secondary">Internally, those networks have private IPs</Text></Appear></ListItem>
             </List>
         </Slide>
         <Slide transition={["slide"]} bgImage={images.city.replace("/", "")} bgDarken={0.75}>
@@ -118,8 +129,11 @@ export default class extends React.Component {
               </Heading>
             </Appear>
             <List fit>
-              <ListItem caps bold textColor="primary"><Appear><Text textSize={54} textColor="secondary">Translate private IPs to public IPs</Text></Appear></ListItem>
-              <ListItem caps bold textColor="primary"><Appear><Text textSize={54} textColor="secondary">"Hole Punching" in NAT firewalls</Text></Appear></ListItem>
+                <ListItem caps bold textColor="primary"><Appear><Text textSize={40} textColor="secondary">"http://www.whatsmyip.org/"</Text></Appear></ListItem>
+                <ListItem caps bold textColor="primary"><Appear><Text textSize={40} textColor="secondary">Translate private IPs to public IPs</Text></Appear></ListItem>
+                <ListItem caps bold textColor="primary"><Appear><Text textSize={40} textColor="secondary">"Hole Punching" in NAT firewalls</Text></Appear></ListItem>
+                <ListItem caps bold textColor="primary"><Appear><Text textSize={40} textColor="secondary">Doesnt solve DHCP, etc.</Text></Appear></ListItem>
+                <ListItem caps bold textColor="primary"><Appear><Text textSize={40} textColor="secondary">"https://github.com/enobufs/stun"</Text></Appear></ListItem>
             </List>
         </Slide>
         <Slide transition={["slide"]} bgImage={images.city.replace("/", "")} bgDarken={0.75}>
@@ -129,9 +143,18 @@ export default class extends React.Component {
               </Heading>
             </Appear>
             <List fit>
-              <ListItem caps bold textColor="primary"><Appear><Text textSize={54} textColor="secondary">Circumvent NAT connections via intermediary</Text></Appear></ListItem>
-              <ListItem caps bold textColor="primary"><Appear><Text textSize={54} textColor="secondary">Intermediary becomes a relay server</Text></Appear></ListItem>
+              <ListItem caps bold textColor="primary"><Appear><Text textSize={40} textColor="secondary">Circumvent NAT connections via intermediary</Text></Appear></ListItem>
+              <ListItem caps bold textColor="primary"><Appear><Text textSize={40} textColor="secondary">Intermediary becomes a relay server</Text></Appear></ListItem>
+              <ListItem caps bold textColor="primary"><Appear><Text textSize={40} textColor="secondary">So now we've abandoned peer-to-peer(P2P)</Text></Appear></ListItem>
+              <ListItem caps bold textColor="primary"><Appear><Text textSize={40} textColor="secondary">"http://numb.viagenie.ca/","https://github.com/tony2001/rfc5766-turn-server"</Text></Appear></ListItem>
             </List>
+        </Slide>
+        <Slide transition={["slide"]} bgImage={images.city.replace("/", "")} bgDarken={0.75}>
+            <Appear>
+              <Heading size={1} caps fit textColor="white">
+                If STUN fails, we turn to TURN... but in a new session
+              </Heading>
+            </Appear>
         </Slide>
         <Slide transition={["slide"]} bgImage={images.city.replace("/", "")} bgDarken={0.75}>
             <Appear>
@@ -140,10 +163,103 @@ export default class extends React.Component {
               </Heading>
             </Appear>
             <List fit>
-              <ListItem caps bold textColor="primary"><Appear><Text textSize={54} textColor="secondary">Sometimes STUN fails</Text></Appear></ListItem>
-              <ListItem caps bold textColor="primary"><Appear><Text textSize={54} textColor="secondary">Allows multi-valued IPs to be used between peers</Text></Appear></ListItem>
-              <ListItem caps bold textColor="primary"><Appear><Text textSize={54} textColor="secondary">ICE trickling allows connection options to trickle in and renegotiate</Text></Appear></ListItem>
+              <ListItem caps bold textColor="primary"><Appear><Text textSize={40} textColor="secondary">Allows multi-valued IPs to be used between peers</Text></Appear></ListItem>
+              <ListItem caps bold textColor="primary"><Appear><Text textSize={40} textColor="secondary">ICE trickling allows connection options to trickle in and renegotiate</Text></Appear></ListItem>
+              <ListItem caps bold textColor="primary"><Appear><Text textSize={40} textColor="secondary">Clients can send / receive data on separate channels</Text></Appear></ListItem>
             </List>
+        </Slide>
+        <Slide transition={["slide"]} bgImage={images.city.replace("/", "")} bgDarken={0.75}>
+            <Appear>
+              <Heading size={1} caps fit textColor="white">
+                Thats infrastructure, now lets talk about APIs
+              </Heading>
+            </Appear>
+        </Slide>
+        <Slide transition={["slide"]} bgImage={images.city.replace("/", "")} bgDarken={0.75}>
+            <Appear>
+              <Heading size={1} caps fit textColor="white">
+                3 web apis
+              </Heading>
+            </Appear>
+            <List fit>
+              <ListItem caps bold textColor="primary"><Appear><Text textSize={40} textColor="secondary">Media Stream</Text></Appear></ListItem>
+              <ListItem caps bold textColor="primary"><Appear><Text textSize={40} textColor="secondary">RTC PeerConnection</Text></Appear></ListItem>
+              <ListItem caps bold textColor="primary"><Appear><Text textSize={40} textColor="secondary">RTC DataChannel</Text></Appear></ListItem>
+            </List>
+        </Slide>
+        <Slide transition={["slide"]} bgImage={images.city.replace("/", "")} bgDarken={0.75}>
+            <Appear>
+              <Heading size={1} caps fit textColor="white">
+                Media stream
+              </Heading>
+            </Appear>
+            <List fit>
+              <ListItem caps bold textColor="primary"><Appear><Text textSize={40} textColor="secondary">getUserMedia()</Text></Appear></ListItem>
+              <ListItem caps bold textColor="primary"><Appear><Text textSize={40} textColor="secondary">Media Stream contains Media Tracks that contain Channels</Text></Appear></ListItem>
+              <ListItem caps bold textColor="primary"><Appear><Text textSize={40} textColor="secondary">Tracks manipulate: start, stop, etc.</Text></Appear></ListItem>
+            </List>
+        </Slide>
+        <Slide transition={["zoom", "fade"]} bgColor="primary">
+          <CodePane
+            lang="javascript"
+            source={require("raw!./navigator.polyfill")}
+            margin="20px auto"/>
+        </Slide>
+        <Slide transition={["zoom", "fade"]} bgColor="primary">
+          <CodePane
+            lang="javascript"
+            source={require("raw!./get.media")}
+            margin="20px auto"/>
+        </Slide>
+        <Slide transition={["slide"]} bgImage={images.city.replace("/", "")} bgDarken={0.75}>
+            <Appear>
+              <Heading size={1} caps fit textColor="white">
+                Thats the media, now we need a connection
+              </Heading>
+            </Appear>
+        </Slide>
+        <Slide transition={["slide"]} bgImage={images.city.replace("/", "")} bgDarken={0.75}>
+            <Appear>
+              <Heading size={1} caps fit textColor="white">
+                RTC Peer Connection
+              </Heading>
+            </Appear>
+            <List fit>
+              <ListItem caps bold textColor="primary"><Appear><Text textSize={40} textColor="secondary">Create Connection Objects</Text></Appear></ListItem>
+              <ListItem caps bold textColor="primary"><Appear><Text textSize={40} textColor="secondary">Listen For ICE</Text></Appear></ListItem>
+              <ListItem caps bold textColor="primary"><Appear><Text textSize={40} textColor="secondary">Send SDP Offers</Text></Appear></ListItem>
+              <ListItem caps bold textColor="primary"><Appear><Text textSize={40} textColor="secondary">Establish Connection</Text></Appear></ListItem>
+            </List>
+        </Slide>
+        <Slide transition={["zoom", "fade"]} bgColor="primary">
+          <CodePane
+            lang="javascript"
+            source={require("raw!./get.media2")}
+            margin="20px auto"/>
+        </Slide>
+        <Slide transition={["zoom", "fade"]} bgColor="primary">
+          <CodePane
+            lang="javascript"
+            source={require("raw!./create.connection")}
+            margin="20px auto"/>
+        </Slide>
+        <Slide transition={["zoom", "fade"]} bgColor="primary">
+          <CodePane
+            lang="javascript"
+            source={require("raw!./get.candidates")}
+            margin="20px auto"/>
+        </Slide>
+        <Slide transition={["zoom", "fade"]} bgColor="primary">
+          <CodePane
+            lang="javascript"
+            source={require("raw!./get.descriptions")}
+            margin="20px auto"/>
+        </Slide>
+        <Slide transition={["zoom", "fade"]} bgColor="primary">
+          <CodePane
+            lang="javascript"
+            source={require("raw!./set.remotestream")}
+            margin="20px auto"/>
         </Slide>
       </Deck>
     )

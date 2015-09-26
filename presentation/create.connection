@@ -1,0 +1,16 @@
+function createConnection(stream) {
+	// use local streams
+	myConnection = new PeerConnection(null);
+	remoteConnection = new PeerConnection(null);
+
+	// listen for ICE candidates
+	myConnection.onicecandidate = gotMyIceCandidate;
+	remoteConnection.onicecandidate = gotRemoteIceCandidate;
+
+	// Handle streams
+	myConnection.addStream(stream);
+	remoteConnection.onaddstream = gotRemoteStream;
+
+	// Create local SDP offer to send to remote
+	myConnection.createOffer(gotLocalDescription);
+}
