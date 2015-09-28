@@ -227,7 +227,7 @@ export default class extends React.Component {
             <List fit>
               <ListItem caps bold textColor="primary"><Appear><Text textSize={40} textColor="secondary">Create Connection Objects</Text></Appear></ListItem>
               <ListItem caps bold textColor="primary"><Appear><Text textSize={40} textColor="secondary">Listen For ICE</Text></Appear></ListItem>
-              <ListItem caps bold textColor="primary"><Appear><Text textSize={40} textColor="secondary">Send SDP Offers</Text></Appear></ListItem>
+              <ListItem caps bold textColor="primary"><Appear><Text textSize={40} textColor="secondary">Send SDP Offers ("https://webrtchacks.com/sdp-anatomy/")</Text></Appear></ListItem>
               <ListItem caps bold textColor="primary"><Appear><Text textSize={40} textColor="secondary">Establish Connection</Text></Appear></ListItem>
             </List>
         </Slide>
@@ -260,6 +260,34 @@ export default class extends React.Component {
             lang="javascript"
             source={require("raw!./set.remotestream")}
             margin="20px auto"/>
+        </Slide>
+        <Slide transition={["slide"]} bgImage={images.city.replace("/", "")} bgDarken={0.75}>
+            <Appear>
+              <Heading size={1} caps fit textColor="white">
+                Demo!
+              </Heading>
+            </Appear>
+        </Slide>
+        <Slide transition={["slide"]} bgImage={images.city.replace("/", "")} bgDarken={0.75}>
+            <Appear>
+              <Heading size={1} caps fit textColor="white">
+                chrome://webrtc-internals
+              </Heading>
+            </Appear>
+        </Slide>
+        <Slide transition={["slide"]} bgImage={images.city.replace("/", "")} bgDarken={0.75}>
+            <Appear>
+              <Heading size={1} caps fit textColor="white">
+                RTC DataChannel
+              </Heading>
+            </Appear>
+            <List fit>
+              <ListItem caps bold textColor="primary"><Appear><Text textSize={40} textColor="secondary">Fast, Efficient data sharing</Text></Appear></ListItem>
+              <ListItem caps bold textColor="primary"><Appear><Text textSize={40} textColor="secondary">Similar to web sockets API</Text></Appear></ListItem>
+              <ListItem caps bold textColor="primary"><Appear><Text textSize={40} textColor="secondary">Datagram Transport Layer Security (DTLS)</Text></Appear></ListItem>
+              <ListItem caps bold textColor="primary"><Appear><Text textSize={40} textColor="secondary">Congestion Control</Text></Appear></ListItem>
+              <ListItem caps bold textColor="primary"><Appear><Text textSize={40} textColor="secondary">"https://github.com/samdutton/simpl/tree/master/rtcdatachannel"</Text></Appear></ListItem>
+            </List>
         </Slide>
       </Deck>
     )

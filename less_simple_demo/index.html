@@ -1,0 +1,177 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Video Chat</title>
+  <script type="text/javascript">
+	// polyfill for cross-browser issues ... should use adapter.js
+	navigator.getWebcam = (
+		navigator.getUserMedia ||
+		navigator.webkitGetUserMedia ||
+		navigator.mozGetUserMedia ||
+		navigator.msGetUserMedia
+	);
+	var PeerConnection = window.RTCPeerConnection ||
+		window.mozRTCPeerConnection ||
+		window.webkitRTCPeerConnection ||
+		window.msRTCPeerConnection;
+
+	var SessionDescription = window.RTCSessionDescription ||
+		window.mozRTCSessionDescription ||
+		window.webkitRTCSessionDescription ||
+		window.msRTCSessionDescription;
+	var config = {
+		"iceServers": [
+			{"url": "stun:stun.1.google.com:19302"},
+			{"url": "stun:stun1.1.google.com:19302"}
+		]
+	};
+
+	var videoButton;
+	var callButton;
+	var socket;
+	var myConnection;
+	var theirConnection;
+	var localStream;
+
+	window.onload = function () {
+		videoButton = document.getElementById("get-video");
+		callButton = document.getElementById("call");
+		socket = io();
+
+		videoButton.addEventListener(
+			'click',
+			function (event) {
+				navigator.getWebcam(
+					{video: true, audio: true},
+					gotYoWebcam,
+					function(error) {
+						// NOT_SUPPORTED
+						// PERMISSION_DENIED
+						// MANDATORY_UNSATISFIED_ERROR
+						console.log("shit dawg something didnt work: ", err);
+					}
+				);
+			  },
+			  false
+		  );
+		function gotYoWebcam(stream) {
+			var localVideo = document.getElementById("my-video");
+			localVideo.src = window.URL.createObjectURL(stream);
+			localVideo.volume = 0;
+			localStream = stream;
+
+			videoButton.setAttribute("disabled", "disabled");
+
+			socket.emit('join', 'testing');
+			socket.on('ready', function(event) {
+				callButton.removeAttribute("disabled");
+				//createConnection();
+			});
+			socket.on('offer', createAnswer);
+			socket.on('answer', onAnswer);
+
+			localVideo.play();
+
+			myConnection = new PeerConnection(config);
+			myConnection.addStream(localStream);
+
+			// handle responses from STUN, TURN servers for ICE candidates found
+			myConnection.onicecandidate = gotMyIceCandidate;
+			// called when setRemoteDescription is called on the connection
+			// handles the remote stream from peer
+			myConnection.onaddstream = onAddStream;
+		}
+
+		callButton.addEventListener(
+			'click',
+			function (event) {
+				createConnection();
+			},
+			false
+		);
+
+		function createConnection() {
+			console.log("creating connection");
+			// myConnection = new PeerConnection(config);
+			// myConnection.addStream(localStream);
+			//
+			// // handle responses from STUN, TURN servers for ICE candidates found
+			// myConnection.onicecandidate = gotMyIceCandidate;
+			// // called when setRemoteDescription is called on the connection
+			// // handles the remote stream from peer
+			// myConnection.onaddstream = onAddStream;
+			// call the createOffer method on the peer connection to initiate
+			// the peer session
+			myConnection.createOffer(
+				function(offer){
+					console.log("offering: ", offer);
+					myConnection.setLocalDescription(offer);
+					socket.emit('offer', JSON.stringify(offer));
+				},
+				function(err){
+					console.log(err);
+				}
+			);
+		}
+
+		function gotMyIceCandidate(event) {
+			if (event.candidate) {
+				console.log("Local candidate: ", event.candidate);
+				// send to remote peer
+				socket.emit('candidate', JSON.stringify(event.candidate));
+			}
+		}
+
+		function createAnswer(offer){
+			console.log("creating answer");
+			rtcOffer = new RTCSessionDescription(JSON.parse(offer));
+			myConnection.setRemoteDescription(rtcOffer,
+				function() {
+					myConnection.createAnswer(
+						function(answer){
+							myConnection.setLocalDescription(answer);
+							socket.emit('answer', JSON.stringify(answer));
+						},
+						function(err){
+							console.log(err);
+						}
+					);
+				}
+			);
+		}
+
+		function onAnswer(answer){
+			console.log("received answer: ", answer);
+    		var rtcAnswer = new RTCSessionDescription(JSON.parse(answer));
+    		myConnection.setRemoteDescription(rtcAnswer);
+  		}
+
+		function onAddStream(event){
+			console.log("adding stream");
+		    theirVideo = document.getElementById('their-video');
+		    theirVideo.src = window.URL.createObjectURL(event.stream);
+	  	}
+
+		// receive an ice candidate from someone else in the room
+		socket.on('candidate', function(candidate){
+			var rtcCandidate = new RTCIceCandidate(JSON.parse(candidate));
+			console.log("adding candidate: ", rtcCandidate);
+			myConnection.addIceCandidate(rtcCandidate);
+		});
+	}
+  </script>
+</head>
+<body>
+  <h1>Video Chat</h1>
+  <video id="my-video" height="300" autoplay></video>
+  <video id="their-video" height="150" autoplay></video>
+
+  <div>
+	<button id="get-video">Get Video</button>
+	<button id="call" disabled="disabled">Call</button>
+  </div>
+
+  <script src="./socket.io-1.3.7.js"></script>
+</body>
+</html>

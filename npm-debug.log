@@ -1,0 +1,26 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'node', '/usr/local/bin/npm', 'run', 'demo2' ]
+2 info using npm@1.4.28
+3 info using node@v0.10.38
+4 verbose run-script [ 'predemo2', 'demo2', 'postdemo2' ]
+5 info predemo2 webrtc-talk@0.1.0
+6 info demo2 webrtc-talk@0.1.0
+7 verbose unsafe-perm in lifecycle true
+8 info webrtc-talk@0.1.0 Failed to exec demo2 script
+9 error webrtc-talk@0.1.0 demo2: `node less_simple_demo/demo_server.js`
+9 error Exit status 8
+10 error Failed at the webrtc-talk@0.1.0 demo2 script.
+10 error This is most likely a problem with the webrtc-talk package,
+10 error not with npm itself.
+10 error Tell the author that this fails on your system:
+10 error     node less_simple_demo/demo_server.js
+10 error You can get their info via:
+10 error     npm owner ls webrtc-talk
+10 error There is likely additional logging output above.
+11 error System Darwin 14.5.0
+12 error command "node" "/usr/local/bin/npm" "run" "demo2"
+13 error cwd /Users/georgefogle/Desktop/webrtc-talk
+14 error node -v v0.10.38
+15 error npm -v 1.4.28
+16 error code ELIFECYCLE
+17 verbose exit [ 1, true ]
