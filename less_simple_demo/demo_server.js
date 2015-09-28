@@ -3,7 +3,7 @@ var app = express();
 
 app.use(express.static(__dirname));
 
-var server = app.listen(3008, "127.0.0.1");
+var server = app.listen(3008, "0.0.0.0");
 var io = require('socket.io').listen(server);
 
 // listen for room connections. only 2 people can join
