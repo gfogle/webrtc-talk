@@ -1,0 +1,28 @@
+function createAnswer(offer){
+	console.log("creating answer");
+	rtcOffer = new RTCSessionDescription(JSON.parse(offer));
+	user = "answerer";
+	myConnection.setRemoteDescription(rtcOffer,
+		function() {
+			myConnection.createAnswer(
+				function(answer){
+					myConnection.setLocalDescription(answer);
+					socket.emit('answer', JSON.stringify(answer));
+				},
+				function(err){
+					console.log(err);
+				}
+			);
+		}
+	);
+	// sync up this channel with channel on other end
+	myConnection.ondatachannel = function (event) {
+		dataChannel = event.channel;
+		// attach event handlers
+		dataChannel.onerror = onChannelError;
+		dataChannel.onmessage = receivedMessage;
+		dataChannel.onopen = onChannelStateChange;
+		dataChannel.onclose = onChannelStateChange;
+	};
+	sendButton.addEventListener("click", sendChat, false);
+}

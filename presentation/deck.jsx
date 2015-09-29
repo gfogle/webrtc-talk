@@ -298,6 +298,24 @@ export default class extends React.Component {
               <ListItem caps bold textColor="primary"><Appear><Text textSize={40} textColor="secondary">"https://github.com/samdutton/simpl/tree/master/rtcdatachannel"</Text></Appear></ListItem>
             </List>
         </Slide>
+        <Slide transition={["zoom", "fade"]} bgColor="primary">
+          <CodePane
+            lang="javascript"
+            source={require("raw!./create.channel")}
+            margin="20px auto"/>
+        </Slide>
+        <Slide transition={["zoom", "fade"]} bgColor="primary">
+          <CodePane
+            lang="javascript"
+            source={require("raw!./answer.channel")}
+            margin="20px auto"/>
+        </Slide>
+        <Slide transition={["zoom", "fade"]} bgColor="primary">
+          <CodePane
+            lang="javascript"
+            source={require("raw!./channel.messaging")}
+            margin="20px auto"/>
+        </Slide>
         <Slide transition={["slide"]} bgImage={images.city.replace("/", "")} bgDarken={0.75}>
             <Appear>
               <Heading size={1} caps fit textColor="white">

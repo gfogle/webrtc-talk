@@ -1,0 +1,13 @@
+// use RTCDataChannel method `send`
+function sendChat() {
+	sendMessage = document.getElementById("send-message");
+	console.log("sending: ", sendMessage.value);
+	dataChannel.send(sendMessage.value);
+	textChat.value += user + ": " + sendMessage.value + "\n";
+}
+
+// Event handler bound to `onmessage` of datachannel
+function receivedMessage(event) {
+	console.log("received message: ", event.data);
+	textChat.value += user + ": " + event.data + "\n";
+}

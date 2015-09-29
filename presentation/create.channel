@@ -1,0 +1,13 @@
+// create a data channel to send text over
+// this can happen before or after signaling
+// arg1 is a unique id for this channel vs others you may create
+dataChannel = myConnection.createDataChannel("myChannel", {
+	ordered: true, // guarantee order of messages
+	maxRetransmitTime: 3000
+});
+
+// attach event handlers
+dataChannel.onerror = onChannelError;
+dataChannel.onmessage = receivedMessage;
+dataChannel.onopen = onChannelStateChange;
+dataChannel.onclose = onChannelStateChange;
