@@ -15,7 +15,6 @@
 		window.mozRTCPeerConnection ||
 		window.webkitRTCPeerConnection ||
 		window.msRTCPeerConnection;
-
 	var SessionDescription = window.RTCSessionDescription ||
 		window.mozRTCSessionDescription ||
 		window.webkitRTCSessionDescription ||
@@ -93,16 +92,6 @@
 
 		function createConnection() {
 			console.log("creating connection");
-			// myConnection = new PeerConnection(config);
-			// myConnection.addStream(localStream);
-			//
-			// // handle responses from STUN, TURN servers for ICE candidates found
-			// myConnection.onicecandidate = gotMyIceCandidate;
-			// // called when setRemoteDescription is called on the connection
-			// // handles the remote stream from peer
-			// myConnection.onaddstream = onAddStream;
-			// call the createOffer method on the peer connection to initiate
-			// the peer session
 			myConnection.createOffer(
 				function(offer){
 					console.log("offering: ", offer);

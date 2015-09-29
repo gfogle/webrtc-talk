@@ -54,11 +54,11 @@ export default class extends React.Component {
               </Heading>
             </Appear>
             <List fit>
-              <ListItem caps bold textColor="primary"><Appear><Text textSize={54} textColor="secondary">Built-in Access to Audio, Video in Browser</Text></Appear></ListItem>
-              <ListItem caps bold textColor="primary"><Appear><Text textSize={54} textColor="secondary">Access via standard JS APIs</Text></Appear></ListItem>
-              <ListItem caps bold textColor="primary"><Appear><Text textSize={54} textColor="secondary">Cross-Browser, No Plugins</Text></Appear></ListItem>
-              <ListItem caps bold textColor="primary"><Appear><Text textSize={54} textColor="secondary">Collaboration (sorta) between Google, Mozilla, Microsoft, etc.</Text></Appear></ListItem>
-              <ListItem caps bold textColor="primary"><Appear><Text textSize={54} textColor="secondary">"http://iswebrtcreadyyet.com"</Text></Appear></ListItem>
+              <ListItem caps bold textColor="primary"><Appear><Text textSize={40} textColor="secondary">Built-in Access to Audio, Video in Browser</Text></Appear></ListItem>
+              <ListItem caps bold textColor="primary"><Appear><Text textSize={40} textColor="secondary">Access via standard JS APIs</Text></Appear></ListItem>
+              <ListItem caps bold textColor="primary"><Appear><Text textSize={40} textColor="secondary">Cross-Browser, No Plugins</Text></Appear></ListItem>
+              <ListItem caps bold textColor="primary"><Appear><Text textSize={40} textColor="secondary">Collaboration (sorta) between Google, Mozilla, Microsoft, etc.</Text></Appear></ListItem>
+              <ListItem caps bold textColor="primary"><Appear><Text textSize={40} textColor="secondary">"http://iswebrtcreadyyet.com"</Text></Appear></ListItem>
             </List>
         </Slide>
         <Slide transition={["slide"]} bgImage={images.city.replace("/", "")} bgDarken={0.75}>
@@ -68,12 +68,12 @@ export default class extends React.Component {
               </Heading>
             </Appear>
             <List fit>
-              <ListItem caps bold textColor="primary"><Appear><Text textSize={54} textColor="secondary">File Sharing</Text></Appear></ListItem>
-              <ListItem caps bold textColor="primary"><Appear><Text textSize={54} textColor="secondary">Phone Calls</Text></Appear></ListItem>
-              <ListItem caps bold textColor="primary"><Appear><Text textSize={54} textColor="secondary">Video Calls</Text></Appear></ListItem>
-              <ListItem caps bold textColor="primary"><Appear><Text textSize={54} textColor="secondary">Screen Sharing</Text></Appear></ListItem>
-              <ListItem caps bold textColor="primary"><Appear><Text textSize={54} textColor="secondary">Chat</Text></Appear></ListItem>
-              <ListItem caps bold textColor="primary"><Appear><Text textSize={54} textColor="secondary">Multiplayer Gaming</Text></Appear></ListItem>
+              <ListItem caps bold textColor="primary"><Appear><Text textSize={40} textColor="secondary">File Sharing</Text></Appear></ListItem>
+              <ListItem caps bold textColor="primary"><Appear><Text textSize={40} textColor="secondary">Phone Calls</Text></Appear></ListItem>
+              <ListItem caps bold textColor="primary"><Appear><Text textSize={40} textColor="secondary">Video Calls</Text></Appear></ListItem>
+              <ListItem caps bold textColor="primary"><Appear><Text textSize={40} textColor="secondary">Screen Sharing</Text></Appear></ListItem>
+              <ListItem caps bold textColor="primary"><Appear><Text textSize={40} textColor="secondary">Chat</Text></Appear></ListItem>
+              <ListItem caps bold textColor="primary"><Appear><Text textSize={40} textColor="secondary">Multiplayer Gaming</Text></Appear></ListItem>
             </List>
         </Slide>
         <Slide transition={["slide"]} bgImage={images.city.replace("/", "")} bgDarken={0.75}>
@@ -83,9 +83,9 @@ export default class extends React.Component {
               </Heading>
             </Appear>
             <List fit>
-              <ListItem caps bold textColor="primary"><Appear><Text textColor="secondary">SIGNALING</Text></Appear></ListItem>
-              <ListItem caps bold textColor="primary"><Appear><Text textColor="secondary">ICE, STUN, TURN</Text></Appear></ListItem>
-              <ListItem caps bold textColor="primary"><Appear><Text textColor="secondary">WEB API</Text></Appear></ListItem>
+              <ListItem caps bold textColor="primary"><Appear><Text textSize={72} textColor="secondary">SIGNALING</Text></Appear></ListItem>
+              <ListItem caps bold textColor="primary"><Appear><Text textSize={72} textColor="secondary">ICE, STUN, TURN</Text></Appear></ListItem>
+              <ListItem caps bold textColor="primary"><Appear><Text textSize={72} textColor="secondary">WEB API</Text></Appear></ListItem>
             </List>
         </Slide>
         <Slide transition={["slide"]} bgImage={images.city.replace("/", "")} bgDarken={0.75}>
@@ -199,18 +199,6 @@ export default class extends React.Component {
               <ListItem caps bold textColor="primary"><Appear><Text textSize={40} textColor="secondary">Tracks manipulate: start, stop, etc.</Text></Appear></ListItem>
             </List>
         </Slide>
-        <Slide transition={["zoom", "fade"]} bgColor="primary">
-          <CodePane
-            lang="javascript"
-            source={require("raw!./navigator.polyfill")}
-            margin="20px auto"/>
-        </Slide>
-        <Slide transition={["zoom", "fade"]} bgColor="primary">
-          <CodePane
-            lang="javascript"
-            source={require("raw!./get.media")}
-            margin="20px auto"/>
-        </Slide>
         <Slide transition={["slide"]} bgImage={images.city.replace("/", "")} bgDarken={0.75}>
             <Appear>
               <Heading size={1} caps fit textColor="white">
@@ -231,36 +219,6 @@ export default class extends React.Component {
               <ListItem caps bold textColor="primary"><Appear><Text textSize={40} textColor="secondary">Establish Connection</Text></Appear></ListItem>
             </List>
         </Slide>
-        <Slide transition={["zoom", "fade"]} bgColor="primary">
-          <CodePane
-            lang="javascript"
-            source={require("raw!./get.media2")}
-            margin="20px auto"/>
-        </Slide>
-        <Slide transition={["zoom", "fade"]} bgColor="primary">
-          <CodePane
-            lang="javascript"
-            source={require("raw!./create.connection")}
-            margin="20px auto"/>
-        </Slide>
-        <Slide transition={["zoom", "fade"]} bgColor="primary">
-          <CodePane
-            lang="javascript"
-            source={require("raw!./get.candidates")}
-            margin="20px auto"/>
-        </Slide>
-        <Slide transition={["zoom", "fade"]} bgColor="primary">
-          <CodePane
-            lang="javascript"
-            source={require("raw!./get.descriptions")}
-            margin="20px auto"/>
-        </Slide>
-        <Slide transition={["zoom", "fade"]} bgColor="primary">
-          <CodePane
-            lang="javascript"
-            source={require("raw!./set.remotestream")}
-            margin="20px auto"/>
-        </Slide>
         <Slide transition={["slide"]} bgImage={images.city.replace("/", "")} bgDarken={0.75}>
             <Appear>
               <Heading size={1} caps fit textColor="white">
@@ -278,6 +236,56 @@ export default class extends React.Component {
         <Slide transition={["slide"]} bgImage={images.city.replace("/", "")} bgDarken={0.75}>
             <Appear>
               <Heading size={1} caps fit textColor="white">
+                Thats the APIs, lets connect peers
+              </Heading>
+            </Appear>
+        </Slide>
+        <Slide transition={["zoom", "fade"]} bgColor="primary">
+          <CodePane
+            lang="javascript"
+            source={require("raw!./navigator.polyfill")}
+            margin="20px auto"/>
+        </Slide>
+        <Slide transition={["zoom", "fade"]} bgColor="primary">
+          <CodePane
+            lang="javascript"
+            source={require("raw!./get.media2")}
+            margin="20px auto"/>
+        </Slide>
+        <Slide transition={["zoom", "fade"]} bgColor="primary">
+          <CodePane
+            lang="javascript"
+            source={require("raw!./create.connection")}
+            margin="20px auto"/>
+        </Slide>
+        <Slide transition={["zoom", "fade"]} bgColor="primary">
+          <CodePane
+            lang="javascript"
+            source={require("raw!./create.answer")}
+            margin="20px auto"/>
+        </Slide>
+        <Slide transition={["zoom", "fade"]} bgColor="primary">
+          <CodePane
+            lang="javascript"
+            source={require("raw!./on.answer")}
+            margin="20px auto"/>
+        </Slide>
+        <Slide transition={["zoom", "fade"]} bgColor="primary">
+          <CodePane
+            lang="javascript"
+            source={require("raw!./the.server")}
+            margin="20px auto"/>
+        </Slide>
+        <Slide transition={["slide"]} bgImage={images.city.replace("/", "")} bgDarken={0.75}>
+            <Appear>
+              <Heading size={1} caps fit textColor="white">
+                Demo2!
+              </Heading>
+            </Appear>
+        </Slide>
+        <Slide transition={["slide"]} bgImage={images.city.replace("/", "")} bgDarken={0.75}>
+            <Appear>
+              <Heading size={1} caps fit textColor="white">
                 RTC DataChannel
               </Heading>
             </Appear>
@@ -286,6 +294,7 @@ export default class extends React.Component {
               <ListItem caps bold textColor="primary"><Appear><Text textSize={40} textColor="secondary">Similar to web sockets API</Text></Appear></ListItem>
               <ListItem caps bold textColor="primary"><Appear><Text textSize={40} textColor="secondary">Datagram Transport Layer Security (DTLS)</Text></Appear></ListItem>
               <ListItem caps bold textColor="primary"><Appear><Text textSize={40} textColor="secondary">Congestion Control</Text></Appear></ListItem>
+              <ListItem caps bold textColor="primary"><Appear><Text textSize={40} textColor="secondary">"https://webrtc.github.io/samples/src/content/datachannel/basic/"</Text></Appear></ListItem>
               <ListItem caps bold textColor="primary"><Appear><Text textSize={40} textColor="secondary">"https://github.com/samdutton/simpl/tree/master/rtcdatachannel"</Text></Appear></ListItem>
             </List>
         </Slide>

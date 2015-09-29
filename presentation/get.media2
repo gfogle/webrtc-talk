@@ -1,13 +1,27 @@
 function gotYoWebcam(stream) {
 	var localVideo = document.getElementById("my-video");
 	localVideo.src = window.URL.createObjectURL(stream);
+	localVideo.volume = 0;
+	localStream = stream;
+
+	videoButton.setAttribute("disabled", "disabled");
+
+	socket.emit('join', 'testing');
+	socket.on('ready', function(event) {
+		callButton.removeAttribute("disabled");
+		//createConnection();
+	});
+	socket.on('offer', createAnswer);
+	socket.on('answer', onAnswer);
+
 	localVideo.play();
 
-	var track = stream.getVideoTracks()[0];
-	var output = document.getElementById("output");
+	myConnection = new PeerConnection(config);
+	myConnection.addStream(localStream);
 
-	output.innerHTML = "stream: " + stream.id + "<br />";
-	output.innerHTML += "track state: " + track.readyState + "<br />";
-
-	createConnection(stream);
+	// handle responses from STUN, TURN servers for ICE candidates found
+	myConnection.onicecandidate = gotMyIceCandidate;
+	// called when setRemoteDescription is called on the connection
+	// handles the remote stream from peer
+	myConnection.onaddstream = onAddStream;
 }

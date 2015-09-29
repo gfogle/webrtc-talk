@@ -5,14 +5,17 @@ navigator.getWebcam = (
 	navigator.mozGetUserMedia ||
 	navigator.msGetUserMedia
 );
-
-navigator.getWebcam(
-	{video: true, audio: false}, // only get video, no audio
-	gotYoWebcam, // we're going to execute this function
-	function(error) {
-		// NOT_SUPPORTED
-		// PERMISSION_DENIED
-		// MANDATORY_UNSATISFIED_ERROR
-		console.log("shit dawg something didnt work: ", err);
-	}
-);
+var PeerConnection = window.RTCPeerConnection ||
+	window.mozRTCPeerConnection ||
+	window.webkitRTCPeerConnection ||
+	window.msRTCPeerConnection;
+var SessionDescription = window.RTCSessionDescription ||
+	window.mozRTCSessionDescription ||
+	window.webkitRTCSessionDescription ||
+	window.msRTCSessionDescription;
+var config = {
+	"iceServers": [
+		{"url": "stun:stun.1.google.com:19302"},
+		{"url": "stun:stun1.1.google.com:19302"}
+	]
+};

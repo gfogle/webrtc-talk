@@ -1,16 +1,15 @@
-function createConnection(stream) {
-	// use local streams
-	myConnection = new PeerConnection(null);
-	remoteConnection = new PeerConnection(null);
-
-	// listen for ICE candidates
-	myConnection.onicecandidate = gotMyIceCandidate;
-	remoteConnection.onicecandidate = gotRemoteIceCandidate;
-
-	// Handle streams
-	myConnection.addStream(stream);
-	remoteConnection.onaddstream = gotRemoteStream;
-
-	// Create local SDP offer to send to remote
-	myConnection.createOffer(gotLocalDescription);
+// invoked when we actually click call button
+function createConnection() {
+	console.log("creating connection");
+	// create offer takes a success callback and error callback
+	myConnection.createOffer(
+		function(offer){
+			console.log("offering: ", offer);
+			myConnection.setLocalDescription(offer);
+			socket.emit('offer', JSON.stringify(offer));
+		},
+		function(err){
+			console.log(err);
+		}
+	);
 }

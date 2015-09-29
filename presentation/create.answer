@@ -1,0 +1,19 @@
+function createAnswer(offer){
+	console.log("creating answer");
+	rtcOffer = new RTCSessionDescription(JSON.parse(offer));
+	// set remote description takes a callback, where you invoke creating an answer
+	myConnection.setRemoteDescription(rtcOffer,
+		function() {
+			// creating an answer takes a success and error callback
+			myConnection.createAnswer(
+				function(answer){
+					myConnection.setLocalDescription(answer);
+					socket.emit('answer', JSON.stringify(answer));
+				},
+				function(err){
+					console.log(err);
+				}
+			);
+		}
+	);
+}

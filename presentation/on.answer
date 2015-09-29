@@ -1,0 +1,5 @@
+function onAnswer(answer){
+	console.log("received answer: ", answer);
+	var rtcAnswer = new RTCSessionDescription(JSON.parse(answer));
+	myConnection.setRemoteDescription(rtcAnswer);
+}
