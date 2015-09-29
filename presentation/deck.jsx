@@ -30,7 +30,10 @@ const images = {
   state5: require('./state5.png'),
   state6: require('./state6.png'),
   state7: require('./state7.png'),
-  props: require('./props.png')
+  props: require('./props.png'),
+  simpleMesh: require("./simple_mesh.jpeg"),
+  complexMesh: require("./complex_mesh.jpeg"),
+  starTopology: require("./star_topology.jpeg")
 };
 
 preloader([images.city, images.kat]);
@@ -74,6 +77,19 @@ export default class extends React.Component {
               <ListItem caps bold textColor="primary"><Appear><Text textSize={40} textColor="secondary">Screen Sharing</Text></Appear></ListItem>
               <ListItem caps bold textColor="primary"><Appear><Text textSize={40} textColor="secondary">Chat</Text></Appear></ListItem>
               <ListItem caps bold textColor="primary"><Appear><Text textSize={40} textColor="secondary">Multiplayer Gaming</Text></Appear></ListItem>
+            </List>
+        </Slide>
+        <Slide transition={["slide"]} bgImage={images.city.replace("/", "")} bgDarken={0.75}>
+            <Appear>
+              <Heading size={1} caps fit textColor="white">
+                Security
+              </Heading>
+            </Appear>
+            <List fit>
+              <ListItem caps bold textColor="primary"><Appear><Text textSize={40} textColor="secondary">Encryption is mandatory in webRTC</Text></Appear></ListItem>
+              <ListItem caps bold textColor="primary"><Appear><Text textSize={40} textColor="secondary">Datagram Transport Layer Security (DTLS)</Text></Appear></ListItem>
+              <ListItem caps bold textColor="primary"><Appear><Text textSize={40} textColor="secondary">DTLS is a derivative of SSL</Text></Appear></ListItem>
+              <ListItem caps bold textColor="primary"><Appear><Text textSize={40} textColor="secondary">"http://wiki.wireshark.org/DTLS"</Text></Appear></ListItem>
             </List>
         </Slide>
         <Slide transition={["slide"]} bgImage={images.city.replace("/", "")} bgDarken={0.75}>
@@ -325,16 +341,26 @@ export default class extends React.Component {
         </Slide>
         <Slide transition={["slide"]} bgImage={images.city.replace("/", "")} bgDarken={0.75}>
             <Appear>
-              <Heading size={1} caps fit textColor="white">
-                Security
+              <Heading size={2} caps fit textColor="white">
+                Scale is an issue
               </Heading>
             </Appear>
-            <List fit>
-              <ListItem caps bold textColor="primary"><Appear><Text textSize={40} textColor="secondary">Encryption is mandatory in webRTC</Text></Appear></ListItem>
-              <ListItem caps bold textColor="primary"><Appear><Text textSize={40} textColor="secondary">Datagram Transport Layer Security (DTLS)</Text></Appear></ListItem>
-              <ListItem caps bold textColor="primary"><Appear><Text textSize={40} textColor="secondary">DTLS is a derivative of SSL</Text></Appear></ListItem>
-              <ListItem caps bold textColor="primary"><Appear><Text textSize={40} textColor="secondary">"http://wiki.wireshark.org/DTLS"</Text></Appear></ListItem>
-            </List>
+        </Slide>
+        <Slide transition={["slide"]} bgImage={images.city.replace("/", "")} bgDarken={0.75}>
+            <Image src={images.simpleMesh.replace('/','')} margin="0px auto 40px" height="493px"/>
+        </Slide>
+        <Slide transition={["slide"]} bgImage={images.city.replace("/", "")} bgDarken={0.75}>
+            <Image src={images.complexMesh.replace('/','')} margin="0px auto 40px" height="493px"/>
+        </Slide>
+        <Slide transition={["slide"]} bgImage={images.city.replace("/", "")} bgDarken={0.75}>
+            <Appear>
+              <Heading size={2} caps fit textColor="white">
+                Instead of Full-Mesh, use Star Topology w/ TURN
+              </Heading>
+            </Appear>
+        </Slide>
+        <Slide transition={["slide"]} bgImage={images.city.replace("/", "")} bgDarken={0.75}>
+            <Image src={images.starTopology.replace('/','')} margin="0px auto 40px" height="493px"/>
         </Slide>
         <Slide transition={["slide"]} bgImage={images.city.replace("/", "")} bgDarken={0.75}>
             <Appear>
